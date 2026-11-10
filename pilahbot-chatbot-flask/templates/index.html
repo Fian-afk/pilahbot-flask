@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f1">
+  <title>{{ chatbot.name }} — Teman Pilah Sampah</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Pilahbot, beranda">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>pilah<span class="brand-light">bot</span></span>
+    </a>
+    <div class="topbar-note"><span class="status-dot"></span> Teman pilah sampahmu</div>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="eyebrow"><span class="eyebrow-line"></span> PILAH DENGAN LEBIH MUDAH</div>
+      <h1 id="page-title">Sampahmu,<br><span>tanggung jawab</span> kita.</h1>
+      <p class="intro-copy">Belum yakin sampah harus masuk ke mana? Tanya Pilahbot. Yuk, mulai kebiasaan kecil yang berarti untuk bumi.</p>
+      <div class="intro-note">
+        <span class="note-icon" aria-hidden="true">✳</span>
+        <span>Jawaban praktis untuk pemilahan sampah rumah tangga.</span>
+      </div>
+      <div class="leaf-art leaf-art-one" aria-hidden="true"></div>
+      <div class="leaf-art leaf-art-two" aria-hidden="true"></div>
+    </section>
+
+    <section class="chat-card" aria-label="Percakapan dengan Pilahbot">
+      <div class="chat-header">
+        <div class="bot-avatar" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path d="M24 7c-8.6 0-15.5 6.9-15.5 15.5S15.4 38 24 38s15.5-6.9 15.5-15.5S32.6 7 24 7Z" fill="#e2f0db"/>
+            <path d="M24 33c-5.8-2.7-8.2-6.8-6.9-11.4 3.8 1.2 6.1 3.3 6.9 6.1.7-5.7 4.1-9 9.1-10.3-.1 7.6-2.5 12.8-9.1 15.6Z" fill="#39764e"/>
+            <path d="M24 33v5" stroke="#39764e" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="bot-details">
+          <div class="bot-name">{{ chatbot.name }} <span class="verified" aria-label="aktif">●</span></div>
+          <div class="bot-caption">Asisten pemilahan sampah</div>
+        </div>
+        <div class="online-label"><span></span> Online</div>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div>
+
+      <div class="suggestions" aria-label="Contoh pertanyaan">
+        <span class="suggestion-label">COBA TANYAKAN</span>
+        {% for suggestion in suggestions %}
+        <button type="button" class="suggestion-chip">{{ suggestion }}</button>
+        {% endfor %}
+      </div>
+
+      <form id="chat-form" class="chat-form" autocomplete="off">
+        <label class="sr-only" for="chat-input">Tulis pertanyaan</label>
+        <input id="chat-input" name="message" type="text" maxlength="500" placeholder="Tulis pertanyaanmu di sini..." required>
+        <button class="send-button" type="submit" aria-label="Kirim pesan">
+          <span>Kirim</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="card-footnote"><span aria-hidden="true">✦</span> Pilahbot menggunakan aturan yang disusun dari knowledge mapping.</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Langkah kecil, dampak besar.</span>
+    <span>Jaga bumi, mulai dari rumah <span aria-hidden="true">♥</span></span>
+  </footer>
+
+  <script>
+    window.PILAHBOT_CONFIG = {
+      greeting: "Halo! Selamat datang di PilahBot. Ada sampah yang ingin kamu identifikasi?"
+    };
+  </script>
+  <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+</body>
+</html>
