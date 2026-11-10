@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7f1">
+  <title>Statistik — Pilahbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Kembali ke Pilahbot">
+      <span class="brand-mark" aria-hidden="true">P</span>
+      <span>pilah<span class="brand-light">bot</span></span>
+    </a>
+    <a class="topbar-link" href="{{ url_for('index') }}">Kembali ke chat</a>
+  </header>
+
+  <main class="statistics-page">
+    <section class="statistics-card" aria-labelledby="statistics-title">
+      <div class="statistics-heading">
+        <div class="eyebrow"><span class="eyebrow-line"></span> RINGKASAN PERCAKAPAN</div>
+        <h1 id="statistics-title">Statistik <span>Pilahbot</span></h1>
+        <p>Gunakan halaman ini untuk menemukan pertanyaan yang belum dipahami bot, lalu tambahkan aturan atau pola yang sesuai ke knowledge base. Ambang pengenalan saat ini: {{ "%.2f"|format(threshold) }}.</p>
+      </div>
+
+      <div class="metric-grid" aria-label="Ringkasan statistik">
+        <article class="metric-card">
+          <span class="metric-value">{{ statistics.total }}</span>
+          <span class="metric-label">Total pertanyaan</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-value">{{ statistics.recognition_rate }}%</span>
+          <span class="metric-label">Persentase dikenali</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-value">{{ statistics.unrecognized }}</span>
+          <span class="metric-label">Jumlah tidak dikenali</span>
+        </article>
+        <article class="metric-card">
+          <span class="metric-value">{{ statistics.visitors }}</span>
+          <span class="metric-label">Jumlah pengunjung (sesi)</span>
+        </article>
+      </div>
+
+      <section class="statistics-section" aria-labelledby="intent-title">
+        <h2 id="intent-title">Jumlah pertanyaan per intent</h2>
+        <div class="table-wrap">
+          <table class="statistics-table">
+            <thead>
+              <tr><th scope="col">Intent</th><th scope="col">Jumlah</th><th scope="col">Proporsi</th></tr>
+            </thead>
+            <tbody>
+              {% for item in statistics.intents %}
+              <tr>
+                <td>{{ item.intent }}</td>
+                <td>{{ item.count }}</td>
+                <td>
+                  <div class="proportion-cell">
+                    <span>{{ item.proportion }}%</span>
+                    <span class="proportion-track" aria-label="{{ item.proportion }}%">
+                      <span class="proportion-fill" style="width: {{ item.proportion }}%"></span>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+              {% else %}
+              <tr><td class="empty-cell" colspan="3">Belum ada pertanyaan yang tercatat.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="statistics-section" aria-labelledby="unknown-title">
+        <h2 id="unknown-title">Pertanyaan yang tidak dikenali <span class="section-note">terbaru</span></h2>
+        <div class="table-wrap">
+          <table class="statistics-table unknown-table">
+            <thead>
+              <tr><th scope="col">Pertanyaan</th><th scope="col">Skor</th><th scope="col">Waktu</th></tr>
+            </thead>
+            <tbody>
+              {% for item in statistics.unknown_questions %}
+              <tr>
+                <td>{{ item.question }}</td>
+                <td>{{ "%.2f"|format(item.score) }}</td>
+                <td>{{ item.created_at }}</td>
+              </tr>
+              {% else %}
+              <tr><td class="empty-cell" colspan="3">Belum ada pertanyaan yang tidak dikenali.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <a class="back-link" href="{{ url_for('index') }}">← Kembali ke chat</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Langkah kecil, dampak besar.</span>
+    <span>Jaga bumi, mulai dari rumah <span aria-hidden="true">♥</span></span>
+  </footer>
+</body>
+</html>
