@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 import pytest
 
 from app import create_app
@@ -93,11 +96,39 @@ def test_chat_menolak_pesan_terlalu_panjang(client):
 
 def test_beranda_memuat_tampilan_chat(client):
     response = client.get("/")
+    html = response.get_data(as_text=True)
 
     assert response.status_code == 200
-    assert "Pilahbot" in response.get_data(as_text=True)
-    assert "Tulis pertanyaanmu" in response.get_data(as_text=True)
-    assert "/statistik" in response.get_data(as_text=True)
+    assert "Pilahbot" in html
+    assert "Tulis pertanyaanmu" in html
+    assert "Halo! Selamat datang di PilahBot." in html
+    assert "Bagaimana membuat kompos?" in html
+    assert "/statistik" in html
+
+
+def test_knowledge_base_sederhana_memiliki_referensi_jawaban_valid():
+    path = Path(__file__).resolve().parents[1] / "knowledge_base.json"
+    knowledge = json.loads(path.read_text(encoding="utf-8"))
+    answers = {
+        answer["id"]: answer
+        for intent in knowledge["intents"]
+        for answer in intent["answers"]
+    }
+    rules = [
+        rule
+        for intent in knowledge["intents"]
+        for rule in intent["rules"]
+    ]
+    referenced_answers = {
+        answer_id
+        for rule in rules
+        for answer_id in rule["answer_ids"]
+    }
+
+    assert all("answers" in intent and "rules" in intent for intent in knowledge["intents"])
+    assert referenced_answers == set(answers)
+    assert knowledge["fallback"]["intent_id"] == "FB01"
+    assert knowledge["fallback"]["rule_id"] == "R10"
 
 
 def test_halaman_statistik_menampilkan_ringkasan_dan_pertanyaan_tidak_dikenali(client):

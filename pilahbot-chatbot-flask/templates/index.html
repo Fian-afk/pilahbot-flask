@@ -64,7 +64,7 @@
 
   <script>
     window.PILAHBOT_CONFIG = {
-      greeting: "Halo! Selamat datang di PilahBot. Ada sampah yang ingin kamu identifikasi?"
+      greeting: {{ chatbot.greeting|tojson }}
     };
   </script>
   <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>

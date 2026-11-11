@@ -53,10 +53,21 @@ class ChatbotEngine:
         self.knowledge = knowledge
         self.threshold = threshold
         self.questions = {
-            item["QA ID"]: item for item in knowledge["questions"]
+            answer["id"]: {
+                **answer,
+                "intent_id": intent["id"],
+                "tag": intent["tag"],
+            }
+            for intent in knowledge["intents"]
+            for answer in intent["answers"]
         }
+        self.question_list = list(self.questions.values())
         self.rules = sorted(
-            (rule for rule in knowledge["rules"] if not rule["condition"].get("fallback")),
+            (
+                {**rule, "intent_id": intent["id"]}
+                for intent in knowledge["intents"]
+                for rule in intent["rules"]
+            ),
             key=lambda rule: rule["priority"],
         )
 
@@ -99,7 +110,7 @@ class ChatbotEngine:
 
     @staticmethod
     def _question_score(message, question):
-        return similarity(message, question["Keyword Pencocokan"].replace(";", " "))
+        return similarity(message, " ".join(question["patterns"]))
 
     def _best_question(self, message, questions):
         return max(
@@ -108,19 +119,14 @@ class ChatbotEngine:
         )
 
     def best_match(self, message):
-        candidates = [
-            question
-            for question in self.knowledge["questions"]
-            if question["QA ID"] != self.knowledge["fallback_qa_id"]
-        ]
-        question = self._best_question(message, candidates)
+        question = self._best_question(message, self.question_list)
         return question, self._question_score(message, question)
 
     def _select_question(self, message, rule):
         candidates = [
-            self.questions[qa_id]
-            for qa_id in rule["qa_ids"]
-            if qa_id in self.questions
+            self.questions[answer_id]
+            for answer_id in rule["answer_ids"]
+            if answer_id in self.questions
         ]
         if not candidates:
             raise ValueError(f"Rule {rule['id']} tidak memiliki respons Q&A yang valid.")
@@ -130,17 +136,17 @@ class ChatbotEngine:
         normalized = normalize(message)
         best_question, best_score = self.best_match(normalized)
         for rule in self.rules:
-            if self._matches_condition(normalized, rule["condition"]):
+            if self._matches_condition(normalized, rule["when"]):
                 question = self._select_question(normalized, rule)
                 score = self._question_score(normalized, question)
                 if score >= self.threshold:
                     return {
-                        "reply": question["Respons Chatbot"],
+                        "reply": question["response"],
                         "intent": rule["intent_id"],
-                        "intent_name": question["Intent"],
-                        "category": question["Kategori"],
+                        "intent_name": question["tag"],
+                        "category": question["category"],
                         "rule_id": rule["id"],
-                        "matched_question": question["Pertanyaan Pengguna"],
+                        "matched_question": question["question"],
                         "score": score,
                     }
 
@@ -149,30 +155,27 @@ class ChatbotEngine:
                 (
                     rule
                     for rule in self.rules
-                    if best_question["QA ID"] in rule["qa_ids"]
+                    if best_question["id"] in rule["answer_ids"]
                 ),
                 None,
             )
             return {
-                "reply": best_question["Respons Chatbot"],
-                "intent": best_question["Intent ID"],
-                "intent_name": best_question["Intent"],
-                "category": best_question["Kategori"],
+                "reply": best_question["response"],
+                "intent": best_question["intent_id"],
+                "intent_name": best_question["tag"],
+                "category": best_question["category"],
                 "rule_id": matching_rule["id"] if matching_rule else None,
-                "matched_question": best_question["Pertanyaan Pengguna"],
+                "matched_question": best_question["question"],
                 "score": best_score,
             }
 
-        question = self.questions[self.knowledge["fallback_qa_id"]]
-        fallback_rule = next(
-            rule for rule in self.knowledge["rules"] if rule["condition"].get("fallback")
-        )
+        fallback = self.knowledge["fallback"]
         return {
-            "reply": question["Respons Chatbot"],
-            "intent": fallback_rule["intent_id"],
-            "intent_name": question["Intent"],
-            "category": question["Kategori"],
-            "rule_id": fallback_rule["id"],
+            "reply": fallback["response"],
+            "intent": fallback["intent_id"],
+            "intent_name": fallback["tag"],
+            "category": fallback["category"],
+            "rule_id": fallback["rule_id"],
             "matched_question": None,
             "score": best_score,
         }

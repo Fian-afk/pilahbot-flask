@@ -56,6 +56,21 @@ Skor kemiripan berada pada rentang `0.00`–`1.00`; pertanyaan dikenali jika
 mencapai ambang `0.45`. Nilainya dapat diubah melalui environment variable
 `THRESHOLD`.
 
+## Knowledge base
+
+`knowledge_base.json` menyimpan konfigurasi bot, kategori, intent, jawaban, dan
+aturan pencocokan. Setiap intent memiliki daftar `answers` dan `rules`; aturan
+merujuk jawaban menggunakan `answer_ids`, sehingga satu jawaban dapat digunakan
+oleh lebih dari satu aturan tanpa diduplikasi. ID dan nama intent pada jawaban
+mewarisi intent induknya. Kondisi aturan disimpan pada `when`, sedangkan `priority`
+menentukan urutan pemeriksaan. Respons cadangan disimpan terpisah pada `fallback`.
+
+Jumlah Q&A dan daftar aturan terkait tidak disimpan sebagai angka atau daftar
+terpisah karena dapat diturunkan dari `answers` dan `rules`. ID kategori, intent,
+aturan, dan jawaban tetap disediakan sebagai pengenal stabil untuk hubungan antar
+data dan informasi hasil pencocokan. Jika struktur JSON diubah, mesin chatbot
+serta pengujian juga perlu disesuaikan.
+
 ## API
 
 `POST /api/chat`

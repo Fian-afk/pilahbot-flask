@@ -2,1047 +2,1076 @@
   "name": "Pilahbot",
   "description": "Asisten edukasi dan panduan pemilahan sampah rumah tangga.",
   "system": "Rule-Based System",
+  "greeting": "Halo! Selamat datang di PilahBot. Ada sampah yang ingin kamu identifikasi?",
+  "suggestions": [
+    "Botol plastik termasuk sampah apa?",
+    "Bagaimana membuat kompos?",
+    "Baterai bekas dibuang ke mana?"
+  ],
   "categories": [
     {
-      "ID": "KAT01",
-      "Kategori": "Sampah organik",
-      "Cakupan": "Sisa makanan, daun, kulit buah, sayuran busuk",
-      "Penanganan / Tujuan": "Diolah menjadi kompos melalui pengomposan",
-      "Intent Terkait": "INT02, INT03",
-      "Jumlah Q&A": "4",
-      "Status": "Dokumen"
+      "id": "KAT01",
+      "name": "Sampah organik",
+      "coverage": "Sisa makanan, daun, kulit buah, sayuran busuk",
+      "handling": "Diolah menjadi kompos melalui pengomposan",
+      "related_intents": [
+        "INT02",
+        "INT03"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT02",
-      "Kategori": "Sampah anorganik",
-      "Cakupan": "Plastik, kertas, kardus, kaca, logam",
-      "Penanganan / Tujuan": "Dipisah per jenis, dikosongkan dan dibersihkan; masuk wadah anorganik, bank sampah, atau fasilitas daur ulang",
-      "Intent Terkait": "INT02, INT04, INT07",
-      "Jumlah Q&A": "6",
-      "Status": "Dokumen"
+      "id": "KAT02",
+      "name": "Sampah anorganik",
+      "coverage": "Plastik, kertas, kardus, kaca, logam",
+      "handling": "Dipisah per jenis, dikosongkan dan dibersihkan; masuk wadah anorganik, bank sampah, atau fasilitas daur ulang",
+      "related_intents": [
+        "INT02",
+        "INT04",
+        "INT07"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT03",
-      "Kategori": "Sampah B3",
-      "Cakupan": "Baterai bekas, lampu neon, aki, kemasan pestisida, obat-obatan",
-      "Penanganan / Tujuan": "Tidak dicampur dengan sampah lain; disimpan aman dan diserahkan ke fasilitas pengumpulan limbah B3",
-      "Intent Terkait": "INT02, INT05, INT07",
-      "Jumlah Q&A": "5",
-      "Status": "Dokumen"
+      "id": "KAT03",
+      "name": "Sampah B3",
+      "coverage": "Baterai bekas, lampu neon, aki, kemasan pestisida, obat-obatan",
+      "handling": "Tidak dicampur dengan sampah lain; disimpan aman dan diserahkan ke fasilitas pengumpulan limbah B3",
+      "related_intents": [
+        "INT02",
+        "INT05",
+        "INT07"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT04",
-      "Kategori": "Sampah residu",
-      "Cakupan": "Tisu, popok bayi, pembalut, styrofoam, plastik multilayer",
-      "Penanganan / Tujuan": "Sulit atau belum dapat didaur ulang; tidak dibuang ke tempat daur ulang biasa",
-      "Intent Terkait": "INT02, INT06",
-      "Jumlah Q&A": "4",
-      "Status": "Dokumen"
+      "id": "KAT04",
+      "name": "Sampah residu",
+      "coverage": "Tisu, popok bayi, pembalut, styrofoam, plastik multilayer",
+      "handling": "Sulit atau belum dapat didaur ulang; tidak dibuang ke tempat daur ulang biasa",
+      "related_intents": [
+        "INT02",
+        "INT06"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT05",
-      "Kategori": "Pengolahan sampah",
-      "Cakupan": "Kompos, daur ulang, penggunaan kembali",
-      "Penanganan / Tujuan": "Panduan pengolahan: pengomposan, daur ulang, reuse",
-      "Intent Terkait": "INT08, INT09, INT10",
-      "Jumlah Q&A": "9",
-      "Status": "Dokumen"
+      "id": "KAT05",
+      "name": "Pengolahan sampah",
+      "coverage": "Kompos, daur ulang, penggunaan kembali",
+      "handling": "Panduan pengolahan: pengomposan, daur ulang, reuse",
+      "related_intents": [
+        "INT08",
+        "INT09",
+        "INT10"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT06",
-      "Kategori": "Informasi Umum",
-      "Cakupan": "Pengertian sampah, jenis sampah, manfaat",
-      "Penanganan / Tujuan": "Edukasi umum: cara membuang dengan benar dan manfaat memilah",
-      "Intent Terkait": "INT07, INT11",
-      "Jumlah Q&A": "4",
-      "Status": "Dokumen"
+      "id": "KAT06",
+      "name": "Informasi Umum",
+      "coverage": "Pengertian sampah, jenis sampah, manfaat",
+      "handling": "Edukasi umum: cara membuang dengan benar dan manfaat memilah",
+      "related_intents": [
+        "INT07",
+        "INT11"
+      ],
+      "status": "Dokumen"
     },
     {
-      "ID": "KAT07",
-      "Kategori": "Percakapan",
-      "Cakupan": "Sapaan, penutup, dan fallback (bukan pengetahuan sampah)",
-      "Penanganan / Tujuan": "Respons interaksi dasar chatbot",
-      "Intent Terkait": "INT01, INT12, FB01",
-      "Jumlah Q&A": "10",
-      "Status": "Usulan baru"
+      "id": "KAT07",
+      "name": "Percakapan",
+      "coverage": "Sapaan, penutup, dan fallback (bukan pengetahuan sampah)",
+      "handling": "Respons interaksi dasar chatbot",
+      "related_intents": [
+        "INT01",
+        "INT12",
+        "FB01"
+      ],
+      "status": "Usulan baru"
     }
   ],
   "intents": [
     {
-      "ID": "INT01",
-      "Intent": "Greeting",
-      "Deskripsi": "Sapaan dari pengguna",
-      "Kategori Utama": "Percakapan",
-      "Jumlah Q&A": "6",
-      "Rule Terkait": "R01, R11",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Deskripsi": "Mengidentifikasi jenis sampah",
-      "Kategori Utama": "Lintas kategori",
-      "Jumlah Q&A": "5",
-      "Rule Terkait": "R02, R03, R04, R05, R23, R24",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT03",
-      "Intent": "Organic_Waste",
-      "Deskripsi": "Informasi sampah organik",
-      "Kategori Utama": "Sampah organik",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R12",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT04",
-      "Intent": "Inorganic_Waste",
-      "Deskripsi": "Informasi sampah anorganik",
-      "Kategori Utama": "Sampah anorganik",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R13",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT05",
-      "Intent": "Hazardous_Waste",
-      "Deskripsi": "Informasi sampah B3",
-      "Kategori Utama": "Sampah B3",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R14, R17",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT06",
-      "Intent": "Residual_Waste",
-      "Deskripsi": "Informasi sampah residu",
-      "Kategori Utama": "Sampah residu",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R15, R25",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT07",
-      "Intent": "Waste_Disposal",
-      "Deskripsi": "Cara membuang sampah",
-      "Kategori Utama": "Lintas kategori",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R16, R18",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT08",
-      "Intent": "Waste_Recycling",
-      "Deskripsi": "Cara mendaur ulang sampah",
-      "Kategori Utama": "Pengolahan sampah",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R07",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT09",
-      "Intent": "Composting",
-      "Deskripsi": "Cara membuat kompos",
-      "Kategori Utama": "Pengolahan sampah",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R06, R19",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT10",
-      "Intent": "Reuse_Waste",
-      "Deskripsi": "Pemanfaatan kembali sampah",
-      "Kategori Utama": "Pengolahan sampah",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R20",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT11",
-      "Intent": "Waste_Benefits",
-      "Deskripsi": "Manfaat memilah sampah",
-      "Kategori Utama": "Informasi Umum",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R08, R21",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "INT12",
-      "Intent": "Goodbye",
-      "Deskripsi": "Mengakhiri percakapan",
-      "Kategori Utama": "Percakapan",
-      "Jumlah Q&A": "3",
-      "Rule Terkait": "R09, R22",
-      "Status": "Dokumen"
-    },
-    {
-      "ID": "FB01",
-      "Intent": "Fallback",
-      "Deskripsi": "Input tidak cocok dengan keyword mana pun (aturan R10)",
-      "Kategori Utama": "Percakapan",
-      "Jumlah Q&A": "1",
-      "Rule Terkait": "R10",
-      "Status": "Usulan baru"
-    }
-  ],
-  "questions": [
-    {
-      "QA ID": "QA001",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Halo",
-      "Keyword Pencocokan": "halo",
-      "Respons Chatbot": "Halo! Selamat datang di PilahBot. Ada sampah yang ingin kamu identifikasi?",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA002",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Hai",
-      "Keyword Pencocokan": "hai",
-      "Respons Chatbot": "Hai! Aku PilahBot, siap membantu kamu memilah sampah.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA003",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Selamat pagi",
-      "Keyword Pencocokan": "selamat pagi",
-      "Respons Chatbot": "Selamat pagi! Yuk, mulai memilah sampah bersama.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA004",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Selamat siang",
-      "Keyword Pencocokan": "selamat siang",
-      "Respons Chatbot": "Selamat siang! Yuk, mulai memilah sampah bersama.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA005",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Selamat sore",
-      "Keyword Pencocokan": "selamat sore",
-      "Respons Chatbot": "Selamat sore! Yuk, mulai memilah sampah bersama.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA006",
-      "Intent ID": "INT01",
-      "Intent": "Greeting",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Selamat malam",
-      "Keyword Pencocokan": "selamat malam",
-      "Respons Chatbot": "Selamat malam! Yuk, mulai memilah sampah bersama.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA007",
-      "Intent ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Botol plastik termasuk sampah apa?",
-      "Keyword Pencocokan": "botol plastik",
-      "Respons Chatbot": "Botol plastik termasuk sampah anorganik. Jika bersih dan diterima fasilitas daur ulang, botol dapat didaur ulang.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA008",
-      "Intent ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Kategori": "Sampah organik",
-      "Pertanyaan Pengguna": "Kulit pisang termasuk sampah apa?",
-      "Keyword Pencocokan": "kulit pisang",
-      "Respons Chatbot": "Kulit pisang termasuk sampah organik dan dapat diolah menjadi kompos.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA009",
-      "Intent ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Kategori": "Sampah B3",
-      "Pertanyaan Pengguna": "Baterai bekas termasuk sampah apa?",
-      "Keyword Pencocokan": "baterai",
-      "Respons Chatbot": "Baterai bekas termasuk sampah B3 karena dapat mengandung bahan berbahaya.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA010",
-      "Intent ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Kategori": "Sampah residu",
-      "Pertanyaan Pengguna": "Popok bekas termasuk sampah apa?",
-      "Keyword Pencocokan": "popok",
-      "Respons Chatbot": "Popok sekali pakai termasuk sampah residu dan tidak boleh dibuang ke tempat daur ulang biasa.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA011",
-      "Intent ID": "INT02",
-      "Intent": "Identify_Waste",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Kertas termasuk sampah apa?",
-      "Keyword Pencocokan": "kertas",
-      "Respons Chatbot": "Kertas bersih termasuk anorganik yang dapat didaur ulang. Kertas berminyak atau sangat kotor biasanya menjadi residu.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA012",
-      "Intent ID": "INT03",
-      "Intent": "Organic_Waste",
-      "Kategori": "Sampah organik",
-      "Pertanyaan Pengguna": "Apa itu sampah organik?",
-      "Keyword Pencocokan": "sampah organik; apa itu",
-      "Respons Chatbot": "Sampah organik adalah sampah yang berasal dari makhluk hidup dan dapat terurai secara alami.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA013",
-      "Intent ID": "INT03",
-      "Intent": "Organic_Waste",
-      "Kategori": "Sampah organik",
-      "Pertanyaan Pengguna": "Contoh sampah organik apa saja?",
-      "Keyword Pencocokan": "sampah organik; contoh",
-      "Respons Chatbot": "Contohnya kulit buah, sisa sayuran, daun kering, dan sisa makanan tertentu.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA014",
-      "Intent ID": "INT03",
-      "Intent": "Organic_Waste",
-      "Kategori": "Sampah organik",
-      "Pertanyaan Pengguna": "Bagaimana mengolah sampah organik?",
-      "Keyword Pencocokan": "sampah organik; mengolah",
-      "Respons Chatbot": "Sampah organik dapat diolah menjadi kompos melalui proses pengomposan.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA015",
-      "Intent ID": "INT04",
-      "Intent": "Inorganic_Waste",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Apa itu sampah anorganik?",
-      "Keyword Pencocokan": "sampah anorganik; apa itu",
-      "Respons Chatbot": "Sampah anorganik merupakan sampah seperti plastik, kaca, logam, dan kertas yang dapat didaur ulang sesuai jenis dan kondisinya.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA016",
-      "Intent ID": "INT04",
-      "Intent": "Inorganic_Waste",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Contoh sampah anorganik apa saja?",
-      "Keyword Pencocokan": "sampah anorganik; contoh",
-      "Respons Chatbot": "Contohnya botol plastik, kaleng, kardus, dan botol kaca.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA017",
-      "Intent ID": "INT04",
-      "Intent": "Inorganic_Waste",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Bisakah sampah anorganik didaur ulang?",
-      "Keyword Pencocokan": "sampah anorganik; didaur ulang",
-      "Respons Chatbot": "Bisa. Pisahkan berdasarkan jenisnya, kosongkan isinya, dan bersihkan jika diperlukan sebelum diserahkan ke fasilitas daur ulang.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA018",
-      "Intent ID": "INT05",
-      "Intent": "Hazardous_Waste",
-      "Kategori": "Sampah B3",
-      "Pertanyaan Pengguna": "Apa itu sampah B3?",
-      "Keyword Pencocokan": "b3; apa itu",
-      "Respons Chatbot": "Sampah B3 adalah sampah yang mengandung bahan berbahaya dan beracun sehingga membutuhkan penanganan khusus.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA019",
-      "Intent ID": "INT05",
-      "Intent": "Hazardous_Waste",
-      "Kategori": "Sampah B3",
-      "Pertanyaan Pengguna": "Contoh sampah B3 rumah tangga?",
-      "Keyword Pencocokan": "b3; contoh",
-      "Respons Chatbot": "Contohnya baterai bekas, lampu tertentu, kemasan bahan kimia, dan obat kedaluwarsa.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA020",
-      "Intent ID": "INT05",
-      "Intent": "Hazardous_Waste",
-      "Kategori": "Sampah B3",
-      "Pertanyaan Pengguna": "Bagaimana membuang baterai bekas?",
-      "Keyword Pencocokan": "baterai; buang",
-      "Respons Chatbot": "Jangan dicampur dengan sampah jenis lain. Simpan secara aman dan serahkan ke fasilitas pengumpulan limbah B3 yang tersedia.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA021",
-      "Intent ID": "INT06",
-      "Intent": "Residual_Waste",
-      "Kategori": "Sampah residu",
-      "Pertanyaan Pengguna": "Apa itu sampah residu?",
-      "Keyword Pencocokan": "residu; apa itu",
-      "Respons Chatbot": "Sampah residu adalah sampah yang sulit atau belum dapat didaur ulang melalui fasilitas pengolahan yang tersedia.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA022",
-      "Intent ID": "INT06",
-      "Intent": "Residual_Waste",
-      "Kategori": "Sampah residu",
-      "Pertanyaan Pengguna": "Contoh sampah residu apa saja?",
-      "Keyword Pencocokan": "residu; contoh",
-      "Respons Chatbot": "Contohnya popok sekali pakai, tisu kotor, dan puntung rokok.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA023",
-      "Intent ID": "INT06",
-      "Intent": "Residual_Waste",
-      "Kategori": "Sampah residu",
-      "Pertanyaan Pengguna": "Apakah tisu bekas bisa didaur ulang?",
-      "Keyword Pencocokan": "tisu; bekas; daur ulang",
-      "Respons Chatbot": "Tisu yang sudah kotor atau terkena cairan umumnya termasuk residu.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA024",
-      "Intent ID": "INT07",
-      "Intent": "Waste_Disposal",
-      "Kategori": "Informasi Umum",
-      "Pertanyaan Pengguna": "Bagaimana cara membuang sampah dengan benar?",
-      "Keyword Pencocokan": "cara membuang; buang",
-      "Respons Chatbot": "Pisahkan sampah berdasarkan kategorinya, gunakan wadah berbeda, dan buang sesuai fasilitas pengelolaan yang tersedia.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA025",
-      "Intent ID": "INT07",
-      "Intent": "Waste_Disposal",
-      "Kategori": "Sampah B3",
-      "Pertanyaan Pengguna": "Baterai bekas dibuang ke mana?",
-      "Keyword Pencocokan": "baterai; dibuang",
-      "Respons Chatbot": "Bawa ke tempat pengumpulan limbah B3 atau fasilitas khusus baterai bekas.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA026",
-      "Intent ID": "INT07",
-      "Intent": "Waste_Disposal",
-      "Kategori": "Sampah anorganik",
-      "Pertanyaan Pengguna": "Botol plastik dibuang ke mana?",
-      "Keyword Pencocokan": "botol plastik; dibuang",
-      "Respons Chatbot": "Masukkan ke wadah anorganik atau serahkan ke bank sampah maupun fasilitas daur ulang yang menerima jenis plastik tersebut.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA027",
-      "Intent ID": "INT08",
-      "Intent": "Waste_Recycling",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Apa itu daur ulang?",
-      "Keyword Pencocokan": "daur ulang; apa itu",
-      "Respons Chatbot": "Daur ulang adalah proses mengolah sampah menjadi bahan atau produk baru agar dapat dimanfaatkan kembali.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA028",
-      "Intent ID": "INT08",
-      "Intent": "Waste_Recycling",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Sampah apa saja yang bisa didaur ulang?",
-      "Keyword Pencocokan": "daur ulang; sampah apa",
-      "Respons Chatbot": "Plastik bersih, kertas, kardus, kaca, dan logam umumnya dapat didaur ulang. Pastikan dipilah dan dibersihkan terlebih dahulu.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA029",
-      "Intent ID": "INT08",
-      "Intent": "Waste_Recycling",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Bagaimana cara mendaur ulang sampah plastik?",
-      "Keyword Pencocokan": "daur ulang; plastik; cara",
-      "Respons Chatbot": "Pisahkan berdasarkan jenis plastik, kosongkan dan bilas, keringkan, lalu serahkan ke bank sampah atau fasilitas daur ulang yang menerimanya.",
-      "Status": "Dikoreksi"
-    },
-    {
-      "QA ID": "QA030",
-      "Intent ID": "INT09",
-      "Intent": "Composting",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Bagaimana cara membuat kompos?",
-      "Keyword Pencocokan": "cara membuat kompos",
-      "Respons Chatbot": "Siapkan wadah kompos, masukkan bahan organik seperti daun kering dan sisa sayuran, jaga kelembapan, lalu aduk secara berkala.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA031",
-      "Intent ID": "INT09",
-      "Intent": "Composting",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Sampah apa yang bisa dijadikan kompos?",
-      "Keyword Pencocokan": "kompos; sampah apa",
-      "Respons Chatbot": "Daun kering, sisa sayuran, kulit buah, dan bahan organik lain yang sesuai.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA032",
-      "Intent ID": "INT09",
-      "Intent": "Composting",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Apakah kulit buah bisa dijadikan kompos?",
-      "Keyword Pencocokan": "kompos; kulit buah",
-      "Respons Chatbot": "Bisa. Kulit buah dapat dicacah agar lebih mudah terurai.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA033",
-      "Intent ID": "INT10",
-      "Intent": "Reuse_Waste",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Apa itu reuse?",
-      "Keyword Pencocokan": "reuse; apa itu",
-      "Respons Chatbot": "Reuse adalah menggunakan kembali barang agar masa pakainya lebih panjang.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA034",
-      "Intent ID": "INT10",
-      "Intent": "Reuse_Waste",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Botol bekas bisa dimanfaatkan untuk apa?",
-      "Keyword Pencocokan": "botol bekas; dimanfaatkan",
-      "Respons Chatbot": "Botol bekas yang bersih dapat digunakan kembali sebagai wadah penyimpanan atau pot tanaman.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA035",
-      "Intent ID": "INT10",
-      "Intent": "Reuse_Waste",
-      "Kategori": "Pengolahan sampah",
-      "Pertanyaan Pengguna": "Bagaimana mengurangi sampah plastik?",
-      "Keyword Pencocokan": "mengurangi sampah plastik",
-      "Respons Chatbot": "Gunakan tas belanja sendiri, botol minum isi ulang, dan wadah makanan yang dapat dipakai berulang kali.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA036",
-      "Intent ID": "INT11",
-      "Intent": "Waste_Benefits",
-      "Kategori": "Informasi Umum",
-      "Pertanyaan Pengguna": "Apa manfaat memilah sampah?",
-      "Keyword Pencocokan": "manfaat memilah",
-      "Respons Chatbot": "Mempermudah proses pengolahan, mengurangi sampah tercampur, dan meningkatkan peluang daur ulang.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA037",
-      "Intent ID": "INT11",
-      "Intent": "Waste_Benefits",
-      "Kategori": "Informasi Umum",
-      "Pertanyaan Pengguna": "Mengapa sampah harus dipisahkan?",
-      "Keyword Pencocokan": "mengapa; dipisah",
-      "Respons Chatbot": "Karena setiap jenis sampah membutuhkan metode pengolahan dan penanganan yang berbeda.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA038",
-      "Intent ID": "INT11",
-      "Intent": "Waste_Benefits",
-      "Kategori": "Informasi Umum",
-      "Pertanyaan Pengguna": "Apa dampak jika sampah tidak dipilah?",
-      "Keyword Pencocokan": "dampak; tidak dipilah",
-      "Respons Chatbot": "Sampah yang tercampur dapat menyulitkan proses daur ulang dan meningkatkan risiko pencemaran lingkungan.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA039",
-      "Intent ID": "INT12",
-      "Intent": "Goodbye",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Terima kasih",
-      "Keyword Pencocokan": "terima kasih",
-      "Respons Chatbot": "Sama-sama! Jangan lupa pilah sampah sebelum membuangnya.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA040",
-      "Intent ID": "INT12",
-      "Intent": "Goodbye",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Sampai jumpa",
-      "Keyword Pencocokan": "sampai jumpa",
-      "Respons Chatbot": "Sampai jumpa! Terus jaga lingkungan bersama PilahBot.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA041",
-      "Intent ID": "INT12",
-      "Intent": "Goodbye",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "Bye",
-      "Keyword Pencocokan": "bye",
-      "Respons Chatbot": "Bye! Semoga harimu menyenangkan.",
-      "Status": "Sesuai dokumen"
-    },
-    {
-      "QA ID": "QA042",
-      "Intent ID": "FB01",
-      "Intent": "Fallback",
-      "Kategori": "Percakapan",
-      "Pertanyaan Pengguna": "(Input tidak dikenali / tidak ada keyword cocok)",
-      "Keyword Pencocokan": "(tidak ada keyword cocok)",
-      "Respons Chatbot": "Maaf, aku belum mengerti maksudmu. Coba sebutkan nama sampahnya, misalnya \"botol plastik\", \"kulit pisang\", atau \"baterai bekas\".",
-      "Status": "Usulan baru"
-    }
-  ],
-  "rules": [
-    {
-      "id": "R01",
-      "priority": 5,
-      "intent_id": "INT01",
-      "qa_ids": [
-        "QA001",
-        "QA002"
+      "id": "INT01",
+      "tag": "Greeting",
+      "description": "Sapaan dari pengguna",
+      "category": "Percakapan",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA001",
+          "category": "Percakapan",
+          "question": "Halo",
+          "patterns": [
+            "halo"
+          ],
+          "response": "Halo! Selamat datang di PilahBot. Ada sampah yang ingin kamu identifikasi?",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA002",
+          "category": "Percakapan",
+          "question": "Hai",
+          "patterns": [
+            "hai"
+          ],
+          "response": "Hai! Aku PilahBot, siap membantu kamu memilah sampah.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA003",
+          "category": "Percakapan",
+          "question": "Selamat pagi",
+          "patterns": [
+            "selamat pagi"
+          ],
+          "response": "Selamat pagi! Yuk, mulai memilah sampah bersama.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA004",
+          "category": "Percakapan",
+          "question": "Selamat siang",
+          "patterns": [
+            "selamat siang"
+          ],
+          "response": "Selamat siang! Yuk, mulai memilah sampah bersama.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA005",
+          "category": "Percakapan",
+          "question": "Selamat sore",
+          "patterns": [
+            "selamat sore"
+          ],
+          "response": "Selamat sore! Yuk, mulai memilah sampah bersama.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA006",
+          "category": "Percakapan",
+          "question": "Selamat malam",
+          "patterns": [
+            "selamat malam"
+          ],
+          "response": "Selamat malam! Yuk, mulai memilah sampah bersama.",
+          "status": "Sesuai dokumen"
+        }
       ],
-      "condition": {
-        "any": [
-          "halo",
-          "hai"
-        ]
-      },
-      "description": "Input mengandung \"halo\" atau \"hai\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R02",
-      "priority": 3,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA007"
-      ],
-      "condition": {
-        "any": [
-          "botol plastik"
-        ]
-      },
-      "description": "Input mengandung \"botol plastik\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R03",
-      "priority": 3,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA008"
-      ],
-      "condition": {
-        "any": [
-          "kulit pisang"
-        ]
-      },
-      "description": "Input mengandung \"kulit pisang\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R04",
-      "priority": 3,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA009"
-      ],
-      "condition": {
-        "any": [
-          "baterai"
-        ]
-      },
-      "description": "Input mengandung \"baterai\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R05",
-      "priority": 3,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA010"
-      ],
-      "condition": {
-        "any": [
-          "popok"
-        ]
-      },
-      "description": "Input mengandung \"popok\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R06",
-      "priority": 2,
-      "intent_id": "INT09",
-      "qa_ids": [
-        "QA030"
-      ],
-      "condition": {
-        "any": [
-          "cara membuat kompos"
-        ]
-      },
-      "description": "Input mengandung \"cara membuat kompos\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R07",
-      "priority": 2,
-      "intent_id": "INT08",
-      "qa_ids": [
-        "QA027",
-        "QA028",
-        "QA029"
-      ],
-      "condition": {
-        "contains_any": [
-          "daur ulang"
-        ],
-        "exclude_any": [
-          "sampah anorganik"
-        ]
-      },
-      "description": "Input mengandung \"daur ulang\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R08",
-      "priority": 2,
-      "intent_id": "INT11",
-      "qa_ids": [
-        "QA036"
-      ],
-      "condition": {
-        "any": [
-          "manfaat memilah"
-        ]
-      },
-      "description": "Input mengandung \"manfaat memilah\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R09",
-      "priority": 2,
-      "intent_id": "INT12",
-      "qa_ids": [
-        "QA039"
-      ],
-      "condition": {
-        "any": [
-          "terima kasih"
-        ]
-      },
-      "description": "Input mengandung \"terima kasih\"",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R10",
-      "priority": 99,
-      "intent_id": "FB01",
-      "qa_ids": [
-        "QA042"
-      ],
-      "condition": {
-        "fallback": true
-      },
-      "description": "Tidak ada keyword yang cocok",
-      "source": "Dokumen"
-    },
-    {
-      "id": "R11",
-      "priority": 2,
-      "intent_id": "INT01",
-      "qa_ids": [
-        "QA003",
-        "QA004",
-        "QA005",
-        "QA006"
-      ],
-      "condition": {
-        "any": [
-          "selamat pagi",
-          "selamat siang",
-          "selamat sore",
-          "selamat malam"
-        ]
-      },
-      "description": "Input mengandung \"selamat pagi\" / \"siang\" / \"sore\" / \"malam\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R12",
-      "priority": 4,
-      "intent_id": "INT03",
-      "qa_ids": [
-        "QA012",
-        "QA013",
-        "QA014"
-      ],
-      "condition": {
-        "any": [
-          "sampah organik"
-        ]
-      },
-      "description": "Input mengandung \"sampah organik\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R13",
-      "priority": 4,
-      "intent_id": "INT04",
-      "qa_ids": [
-        "QA015",
-        "QA016",
-        "QA017"
-      ],
-      "condition": {
-        "any": [
-          "sampah anorganik"
-        ]
-      },
-      "description": "Input mengandung \"sampah anorganik\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R14",
-      "priority": 4,
-      "intent_id": "INT05",
-      "qa_ids": [
-        "QA018",
-        "QA019",
-        "QA020"
-      ],
-      "condition": {
-        "any": [
-          "b3",
-          "bahan berbahaya"
-        ]
-      },
-      "description": "Input mengandung \"b3\" atau \"bahan berbahaya\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R15",
-      "priority": 4,
-      "intent_id": "INT06",
-      "qa_ids": [
-        "QA021",
-        "QA022",
-        "QA023"
-      ],
-      "condition": {
-        "any": [
-          "residu"
-        ]
-      },
-      "description": "Input mengandung \"residu\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R16",
-      "priority": 4,
-      "intent_id": "INT07",
-      "qa_ids": [
-        "QA024",
-        "QA025",
-        "QA026"
-      ],
-      "condition": {
-        "contains_any": [
-          "buang"
-        ]
-      },
-      "description": "Input mengandung \"buang\" (membuang / dibuang)",
-      "source": "Usulan"
-    },
-    {
-      "id": "R17",
-      "priority": 1,
-      "intent_id": "INT05",
-      "qa_ids": [
-        "QA020",
-        "QA025"
-      ],
-      "condition": {
-        "all": [
-          "baterai"
-        ],
-        "contains_all": [
-          "buang"
-        ]
-      },
-      "description": "Input mengandung \"baterai\" DAN \"buang\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R18",
-      "priority": 1,
-      "intent_id": "INT07",
-      "qa_ids": [
-        "QA026"
-      ],
-      "condition": {
-        "all": [
-          "botol plastik"
-        ],
-        "contains_all": [
-          "buang"
-        ]
-      },
-      "description": "Input mengandung \"botol plastik\" DAN \"buang\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R19",
-      "priority": 4,
-      "intent_id": "INT09",
-      "qa_ids": [
-        "QA031",
-        "QA032"
-      ],
-      "condition": {
-        "any": [
-          "kompos"
-        ]
-      },
-      "description": "Input mengandung \"kompos\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R20",
-      "priority": 4,
-      "intent_id": "INT10",
-      "qa_ids": [
-        "QA033",
-        "QA034",
-        "QA035"
-      ],
-      "condition": {
-        "any": [
-          "reuse",
-          "memanfaatkan",
-          "mengurangi sampah plastik",
-          "dimanfaatkan"
-        ]
-      },
-      "description": "Input mengandung \"reuse\", \"memanfaatkan\", atau \"mengurangi sampah plastik\"",
-      "source": "Usulan"
-    },
-    {
-      "id": "R21",
-      "priority": 2,
-      "intent_id": "INT11",
-      "qa_ids": [
-        "QA037",
-        "QA038"
-      ],
-      "condition": {
-        "alternatives": [
-          {
-            "all": [
-              "mengapa"
-            ],
-            "contains_all": [
-              "pisah"
+      "rules": [
+        {
+          "id": "R01",
+          "priority": 5,
+          "when": {
+            "any": [
+              "halo",
+              "hai"
             ]
           },
-          {
+          "answer_ids": [
+            "QA001",
+            "QA002"
+          ],
+          "description": "Input mengandung \"halo\" atau \"hai\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R11",
+          "priority": 2,
+          "when": {
             "any": [
-              "dampak"
+              "selamat pagi",
+              "selamat siang",
+              "selamat sore",
+              "selamat malam"
             ]
-          }
-        ]
-      },
-      "description": "Input mengandung \"mengapa dipisah\" atau \"dampak tidak dipilah\"",
-      "source": "Usulan"
+          },
+          "answer_ids": [
+            "QA003",
+            "QA004",
+            "QA005",
+            "QA006"
+          ],
+          "description": "Input mengandung \"selamat pagi\" / \"siang\" / \"sore\" / \"malam\"",
+          "source": "Usulan"
+        }
+      ]
     },
     {
-      "id": "R22",
-      "priority": 2,
-      "intent_id": "INT12",
-      "qa_ids": [
-        "QA040",
-        "QA041"
+      "id": "INT02",
+      "tag": "Identify_Waste",
+      "description": "Mengidentifikasi jenis sampah",
+      "category": "Lintas kategori",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA007",
+          "category": "Sampah anorganik",
+          "question": "Botol plastik termasuk sampah apa?",
+          "patterns": [
+            "botol plastik"
+          ],
+          "response": "Botol plastik termasuk sampah anorganik. Jika bersih dan diterima fasilitas daur ulang, botol dapat didaur ulang.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA008",
+          "category": "Sampah organik",
+          "question": "Kulit pisang termasuk sampah apa?",
+          "patterns": [
+            "kulit pisang"
+          ],
+          "response": "Kulit pisang termasuk sampah organik dan dapat diolah menjadi kompos.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA009",
+          "category": "Sampah B3",
+          "question": "Baterai bekas termasuk sampah apa?",
+          "patterns": [
+            "baterai"
+          ],
+          "response": "Baterai bekas termasuk sampah B3 karena dapat mengandung bahan berbahaya.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA010",
+          "category": "Sampah residu",
+          "question": "Popok bekas termasuk sampah apa?",
+          "patterns": [
+            "popok"
+          ],
+          "response": "Popok sekali pakai termasuk sampah residu dan tidak boleh dibuang ke tempat daur ulang biasa.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA011",
+          "category": "Sampah anorganik",
+          "question": "Kertas termasuk sampah apa?",
+          "patterns": [
+            "kertas"
+          ],
+          "response": "Kertas bersih termasuk anorganik yang dapat didaur ulang. Kertas berminyak atau sangat kotor biasanya menjadi residu.",
+          "status": "Sesuai dokumen"
+        }
       ],
-      "condition": {
-        "any": [
-          "sampai jumpa",
-          "bye"
-        ]
-      },
-      "description": "Input mengandung \"sampai jumpa\" atau \"bye\"",
-      "source": "Usulan"
+      "rules": [
+        {
+          "id": "R02",
+          "priority": 3,
+          "when": {
+            "any": [
+              "botol plastik"
+            ]
+          },
+          "answer_ids": [
+            "QA007"
+          ],
+          "description": "Input mengandung \"botol plastik\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R03",
+          "priority": 3,
+          "when": {
+            "any": [
+              "kulit pisang"
+            ]
+          },
+          "answer_ids": [
+            "QA008"
+          ],
+          "description": "Input mengandung \"kulit pisang\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R04",
+          "priority": 3,
+          "when": {
+            "any": [
+              "baterai"
+            ]
+          },
+          "answer_ids": [
+            "QA009"
+          ],
+          "description": "Input mengandung \"baterai\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R05",
+          "priority": 3,
+          "when": {
+            "any": [
+              "popok"
+            ]
+          },
+          "answer_ids": [
+            "QA010"
+          ],
+          "description": "Input mengandung \"popok\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R23",
+          "priority": 1,
+          "when": {
+            "all": [
+              "kertas"
+            ],
+            "any": [
+              "berminyak",
+              "kotor"
+            ]
+          },
+          "answer_ids": [
+            "QA011"
+          ],
+          "description": "Input mengandung \"kertas\" DAN (\"berminyak\" ATAU \"kotor\")",
+          "source": "Usulan"
+        },
+        {
+          "id": "R24",
+          "priority": 3,
+          "when": {
+            "any": [
+              "kertas"
+            ]
+          },
+          "answer_ids": [
+            "QA011"
+          ],
+          "description": "Input mengandung \"kertas\"",
+          "source": "Usulan"
+        }
+      ]
     },
     {
-      "id": "R23",
-      "priority": 1,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA011"
+      "id": "INT03",
+      "tag": "Organic_Waste",
+      "description": "Informasi sampah organik",
+      "category": "Sampah organik",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA012",
+          "category": "Sampah organik",
+          "question": "Apa itu sampah organik?",
+          "patterns": [
+            "sampah organik",
+            "apa itu"
+          ],
+          "response": "Sampah organik adalah sampah yang berasal dari makhluk hidup dan dapat terurai secara alami.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA013",
+          "category": "Sampah organik",
+          "question": "Contoh sampah organik apa saja?",
+          "patterns": [
+            "sampah organik",
+            "contoh"
+          ],
+          "response": "Contohnya kulit buah, sisa sayuran, daun kering, dan sisa makanan tertentu.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA014",
+          "category": "Sampah organik",
+          "question": "Bagaimana mengolah sampah organik?",
+          "patterns": [
+            "sampah organik",
+            "mengolah"
+          ],
+          "response": "Sampah organik dapat diolah menjadi kompos melalui proses pengomposan.",
+          "status": "Sesuai dokumen"
+        }
       ],
-      "condition": {
-        "all": [
-          "kertas"
-        ],
-        "any": [
-          "berminyak",
-          "kotor"
-        ]
-      },
-      "description": "Input mengandung \"kertas\" DAN (\"berminyak\" ATAU \"kotor\")",
-      "source": "Usulan"
+      "rules": [
+        {
+          "id": "R12",
+          "priority": 4,
+          "when": {
+            "any": [
+              "sampah organik"
+            ]
+          },
+          "answer_ids": [
+            "QA012",
+            "QA013",
+            "QA014"
+          ],
+          "description": "Input mengandung \"sampah organik\"",
+          "source": "Usulan"
+        }
+      ]
     },
     {
-      "id": "R24",
-      "priority": 3,
-      "intent_id": "INT02",
-      "qa_ids": [
-        "QA011"
+      "id": "INT04",
+      "tag": "Inorganic_Waste",
+      "description": "Informasi sampah anorganik",
+      "category": "Sampah anorganik",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA015",
+          "category": "Sampah anorganik",
+          "question": "Apa itu sampah anorganik?",
+          "patterns": [
+            "sampah anorganik",
+            "apa itu"
+          ],
+          "response": "Sampah anorganik merupakan sampah seperti plastik, kaca, logam, dan kertas yang dapat didaur ulang sesuai jenis dan kondisinya.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA016",
+          "category": "Sampah anorganik",
+          "question": "Contoh sampah anorganik apa saja?",
+          "patterns": [
+            "sampah anorganik",
+            "contoh"
+          ],
+          "response": "Contohnya botol plastik, kaleng, kardus, dan botol kaca.",
+          "status": "Dikoreksi"
+        },
+        {
+          "id": "QA017",
+          "category": "Sampah anorganik",
+          "question": "Bisakah sampah anorganik didaur ulang?",
+          "patterns": [
+            "sampah anorganik",
+            "didaur ulang"
+          ],
+          "response": "Bisa. Pisahkan berdasarkan jenisnya, kosongkan isinya, dan bersihkan jika diperlukan sebelum diserahkan ke fasilitas daur ulang.",
+          "status": "Dikoreksi"
+        }
       ],
-      "condition": {
-        "any": [
-          "kertas"
-        ]
-      },
-      "description": "Input mengandung \"kertas\"",
-      "source": "Usulan"
+      "rules": [
+        {
+          "id": "R13",
+          "priority": 4,
+          "when": {
+            "any": [
+              "sampah anorganik"
+            ]
+          },
+          "answer_ids": [
+            "QA015",
+            "QA016",
+            "QA017"
+          ],
+          "description": "Input mengandung \"sampah anorganik\"",
+          "source": "Usulan"
+        }
+      ]
     },
     {
-      "id": "R25",
-      "priority": 1,
-      "intent_id": "INT06",
-      "qa_ids": [
-        "QA023"
+      "id": "INT05",
+      "tag": "Hazardous_Waste",
+      "description": "Informasi sampah B3",
+      "category": "Sampah B3",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA018",
+          "category": "Sampah B3",
+          "question": "Apa itu sampah B3?",
+          "patterns": [
+            "b3",
+            "apa itu"
+          ],
+          "response": "Sampah B3 adalah sampah yang mengandung bahan berbahaya dan beracun sehingga membutuhkan penanganan khusus.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA019",
+          "category": "Sampah B3",
+          "question": "Contoh sampah B3 rumah tangga?",
+          "patterns": [
+            "b3",
+            "contoh"
+          ],
+          "response": "Contohnya baterai bekas, lampu tertentu, kemasan bahan kimia, dan obat kedaluwarsa.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA020",
+          "category": "Sampah B3",
+          "question": "Bagaimana membuang baterai bekas?",
+          "patterns": [
+            "baterai",
+            "buang"
+          ],
+          "response": "Jangan dicampur dengan sampah jenis lain. Simpan secara aman dan serahkan ke fasilitas pengumpulan limbah B3 yang tersedia.",
+          "status": "Sesuai dokumen"
+        }
       ],
-      "condition": {
-        "all": [
-          "tisu"
-        ],
-        "any": [
-          "kotor",
-          "bekas",
-          "cairan"
-        ]
-      },
-      "description": "Input mengandung \"tisu\" DAN (\"kotor\", \"bekas\", atau \"cairan\")",
-      "source": "Usulan"
+      "rules": [
+        {
+          "id": "R14",
+          "priority": 4,
+          "when": {
+            "any": [
+              "b3",
+              "bahan berbahaya"
+            ]
+          },
+          "answer_ids": [
+            "QA018",
+            "QA019",
+            "QA020"
+          ],
+          "description": "Input mengandung \"b3\" atau \"bahan berbahaya\"",
+          "source": "Usulan"
+        },
+        {
+          "id": "R17",
+          "priority": 1,
+          "when": {
+            "all": [
+              "baterai"
+            ],
+            "contains_all": [
+              "buang"
+            ]
+          },
+          "answer_ids": [
+            "QA020",
+            "QA025"
+          ],
+          "description": "Input mengandung \"baterai\" DAN \"buang\"",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT06",
+      "tag": "Residual_Waste",
+      "description": "Informasi sampah residu",
+      "category": "Sampah residu",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA021",
+          "category": "Sampah residu",
+          "question": "Apa itu sampah residu?",
+          "patterns": [
+            "residu",
+            "apa itu"
+          ],
+          "response": "Sampah residu adalah sampah yang sulit atau belum dapat didaur ulang melalui fasilitas pengolahan yang tersedia.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA022",
+          "category": "Sampah residu",
+          "question": "Contoh sampah residu apa saja?",
+          "patterns": [
+            "residu",
+            "contoh"
+          ],
+          "response": "Contohnya popok sekali pakai, tisu kotor, dan puntung rokok.",
+          "status": "Dikoreksi"
+        },
+        {
+          "id": "QA023",
+          "category": "Sampah residu",
+          "question": "Apakah tisu bekas bisa didaur ulang?",
+          "patterns": [
+            "tisu",
+            "bekas",
+            "daur ulang"
+          ],
+          "response": "Tisu yang sudah kotor atau terkena cairan umumnya termasuk residu.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R15",
+          "priority": 4,
+          "when": {
+            "any": [
+              "residu"
+            ]
+          },
+          "answer_ids": [
+            "QA021",
+            "QA022",
+            "QA023"
+          ],
+          "description": "Input mengandung \"residu\"",
+          "source": "Usulan"
+        },
+        {
+          "id": "R25",
+          "priority": 1,
+          "when": {
+            "all": [
+              "tisu"
+            ],
+            "any": [
+              "kotor",
+              "bekas",
+              "cairan"
+            ]
+          },
+          "answer_ids": [
+            "QA023"
+          ],
+          "description": "Input mengandung \"tisu\" DAN (\"kotor\", \"bekas\", atau \"cairan\")",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT07",
+      "tag": "Waste_Disposal",
+      "description": "Cara membuang sampah",
+      "category": "Lintas kategori",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA024",
+          "category": "Informasi Umum",
+          "question": "Bagaimana cara membuang sampah dengan benar?",
+          "patterns": [
+            "cara membuang",
+            "buang"
+          ],
+          "response": "Pisahkan sampah berdasarkan kategorinya, gunakan wadah berbeda, dan buang sesuai fasilitas pengelolaan yang tersedia.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA025",
+          "category": "Sampah B3",
+          "question": "Baterai bekas dibuang ke mana?",
+          "patterns": [
+            "baterai",
+            "dibuang"
+          ],
+          "response": "Bawa ke tempat pengumpulan limbah B3 atau fasilitas khusus baterai bekas.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA026",
+          "category": "Sampah anorganik",
+          "question": "Botol plastik dibuang ke mana?",
+          "patterns": [
+            "botol plastik",
+            "dibuang"
+          ],
+          "response": "Masukkan ke wadah anorganik atau serahkan ke bank sampah maupun fasilitas daur ulang yang menerima jenis plastik tersebut.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R16",
+          "priority": 4,
+          "when": {
+            "contains_any": [
+              "buang"
+            ]
+          },
+          "answer_ids": [
+            "QA024",
+            "QA025",
+            "QA026"
+          ],
+          "description": "Input mengandung \"buang\" (membuang / dibuang)",
+          "source": "Usulan"
+        },
+        {
+          "id": "R18",
+          "priority": 1,
+          "when": {
+            "all": [
+              "botol plastik"
+            ],
+            "contains_all": [
+              "buang"
+            ]
+          },
+          "answer_ids": [
+            "QA026"
+          ],
+          "description": "Input mengandung \"botol plastik\" DAN \"buang\"",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT08",
+      "tag": "Waste_Recycling",
+      "description": "Cara mendaur ulang sampah",
+      "category": "Pengolahan sampah",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA027",
+          "category": "Pengolahan sampah",
+          "question": "Apa itu daur ulang?",
+          "patterns": [
+            "daur ulang",
+            "apa itu"
+          ],
+          "response": "Daur ulang adalah proses mengolah sampah menjadi bahan atau produk baru agar dapat dimanfaatkan kembali.",
+          "status": "Dikoreksi"
+        },
+        {
+          "id": "QA028",
+          "category": "Pengolahan sampah",
+          "question": "Sampah apa saja yang bisa didaur ulang?",
+          "patterns": [
+            "daur ulang",
+            "sampah apa"
+          ],
+          "response": "Plastik bersih, kertas, kardus, kaca, dan logam umumnya dapat didaur ulang. Pastikan dipilah dan dibersihkan terlebih dahulu.",
+          "status": "Dikoreksi"
+        },
+        {
+          "id": "QA029",
+          "category": "Pengolahan sampah",
+          "question": "Bagaimana cara mendaur ulang sampah plastik?",
+          "patterns": [
+            "daur ulang",
+            "plastik",
+            "cara"
+          ],
+          "response": "Pisahkan berdasarkan jenis plastik, kosongkan dan bilas, keringkan, lalu serahkan ke bank sampah atau fasilitas daur ulang yang menerimanya.",
+          "status": "Dikoreksi"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R07",
+          "priority": 2,
+          "when": {
+            "contains_any": [
+              "daur ulang"
+            ],
+            "exclude_any": [
+              "sampah anorganik"
+            ]
+          },
+          "answer_ids": [
+            "QA027",
+            "QA028",
+            "QA029"
+          ],
+          "description": "Input mengandung \"daur ulang\"",
+          "source": "Dokumen"
+        }
+      ]
+    },
+    {
+      "id": "INT09",
+      "tag": "Composting",
+      "description": "Cara membuat kompos",
+      "category": "Pengolahan sampah",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA030",
+          "category": "Pengolahan sampah",
+          "question": "Bagaimana cara membuat kompos?",
+          "patterns": [
+            "cara membuat kompos"
+          ],
+          "response": "Siapkan wadah kompos, masukkan bahan organik seperti daun kering dan sisa sayuran, jaga kelembapan, lalu aduk secara berkala.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA031",
+          "category": "Pengolahan sampah",
+          "question": "Sampah apa yang bisa dijadikan kompos?",
+          "patterns": [
+            "kompos",
+            "sampah apa"
+          ],
+          "response": "Daun kering, sisa sayuran, kulit buah, dan bahan organik lain yang sesuai.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA032",
+          "category": "Pengolahan sampah",
+          "question": "Apakah kulit buah bisa dijadikan kompos?",
+          "patterns": [
+            "kompos",
+            "kulit buah"
+          ],
+          "response": "Bisa. Kulit buah dapat dicacah agar lebih mudah terurai.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R06",
+          "priority": 2,
+          "when": {
+            "any": [
+              "cara membuat kompos"
+            ]
+          },
+          "answer_ids": [
+            "QA030"
+          ],
+          "description": "Input mengandung \"cara membuat kompos\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R19",
+          "priority": 4,
+          "when": {
+            "any": [
+              "kompos"
+            ]
+          },
+          "answer_ids": [
+            "QA031",
+            "QA032"
+          ],
+          "description": "Input mengandung \"kompos\"",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT10",
+      "tag": "Reuse_Waste",
+      "description": "Pemanfaatan kembali sampah",
+      "category": "Pengolahan sampah",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA033",
+          "category": "Pengolahan sampah",
+          "question": "Apa itu reuse?",
+          "patterns": [
+            "reuse",
+            "apa itu"
+          ],
+          "response": "Reuse adalah menggunakan kembali barang agar masa pakainya lebih panjang.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA034",
+          "category": "Pengolahan sampah",
+          "question": "Botol bekas bisa dimanfaatkan untuk apa?",
+          "patterns": [
+            "botol bekas",
+            "dimanfaatkan"
+          ],
+          "response": "Botol bekas yang bersih dapat digunakan kembali sebagai wadah penyimpanan atau pot tanaman.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA035",
+          "category": "Pengolahan sampah",
+          "question": "Bagaimana mengurangi sampah plastik?",
+          "patterns": [
+            "mengurangi sampah plastik"
+          ],
+          "response": "Gunakan tas belanja sendiri, botol minum isi ulang, dan wadah makanan yang dapat dipakai berulang kali.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R20",
+          "priority": 4,
+          "when": {
+            "any": [
+              "reuse",
+              "memanfaatkan",
+              "mengurangi sampah plastik",
+              "dimanfaatkan"
+            ]
+          },
+          "answer_ids": [
+            "QA033",
+            "QA034",
+            "QA035"
+          ],
+          "description": "Input mengandung \"reuse\", \"memanfaatkan\", atau \"mengurangi sampah plastik\"",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT11",
+      "tag": "Waste_Benefits",
+      "description": "Manfaat memilah sampah",
+      "category": "Informasi Umum",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA036",
+          "category": "Informasi Umum",
+          "question": "Apa manfaat memilah sampah?",
+          "patterns": [
+            "manfaat memilah"
+          ],
+          "response": "Mempermudah proses pengolahan, mengurangi sampah tercampur, dan meningkatkan peluang daur ulang.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA037",
+          "category": "Informasi Umum",
+          "question": "Mengapa sampah harus dipisahkan?",
+          "patterns": [
+            "mengapa",
+            "dipisah"
+          ],
+          "response": "Karena setiap jenis sampah membutuhkan metode pengolahan dan penanganan yang berbeda.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA038",
+          "category": "Informasi Umum",
+          "question": "Apa dampak jika sampah tidak dipilah?",
+          "patterns": [
+            "dampak",
+            "tidak dipilah"
+          ],
+          "response": "Sampah yang tercampur dapat menyulitkan proses daur ulang dan meningkatkan risiko pencemaran lingkungan.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R08",
+          "priority": 2,
+          "when": {
+            "any": [
+              "manfaat memilah"
+            ]
+          },
+          "answer_ids": [
+            "QA036"
+          ],
+          "description": "Input mengandung \"manfaat memilah\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R21",
+          "priority": 2,
+          "when": {
+            "alternatives": [
+              {
+                "all": [
+                  "mengapa"
+                ],
+                "contains_all": [
+                  "pisah"
+                ]
+              },
+              {
+                "any": [
+                  "dampak"
+                ]
+              }
+            ]
+          },
+          "answer_ids": [
+            "QA037",
+            "QA038"
+          ],
+          "description": "Input mengandung \"mengapa dipisah\" atau \"dampak tidak dipilah\"",
+          "source": "Usulan"
+        }
+      ]
+    },
+    {
+      "id": "INT12",
+      "tag": "Goodbye",
+      "description": "Mengakhiri percakapan",
+      "category": "Percakapan",
+      "status": "Dokumen",
+      "answers": [
+        {
+          "id": "QA039",
+          "category": "Percakapan",
+          "question": "Terima kasih",
+          "patterns": [
+            "terima kasih"
+          ],
+          "response": "Sama-sama! Jangan lupa pilah sampah sebelum membuangnya.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA040",
+          "category": "Percakapan",
+          "question": "Sampai jumpa",
+          "patterns": [
+            "sampai jumpa"
+          ],
+          "response": "Sampai jumpa! Terus jaga lingkungan bersama PilahBot.",
+          "status": "Sesuai dokumen"
+        },
+        {
+          "id": "QA041",
+          "category": "Percakapan",
+          "question": "Bye",
+          "patterns": [
+            "bye"
+          ],
+          "response": "Bye! Semoga harimu menyenangkan.",
+          "status": "Sesuai dokumen"
+        }
+      ],
+      "rules": [
+        {
+          "id": "R09",
+          "priority": 2,
+          "when": {
+            "any": [
+              "terima kasih"
+            ]
+          },
+          "answer_ids": [
+            "QA039"
+          ],
+          "description": "Input mengandung \"terima kasih\"",
+          "source": "Dokumen"
+        },
+        {
+          "id": "R22",
+          "priority": 2,
+          "when": {
+            "any": [
+              "sampai jumpa",
+              "bye"
+            ]
+          },
+          "answer_ids": [
+            "QA040",
+            "QA041"
+          ],
+          "description": "Input mengandung \"sampai jumpa\" atau \"bye\"",
+          "source": "Usulan"
+        }
+      ]
     }
   ],
-  "fallback_qa_id": "QA042"
+  "fallback": {
+    "id": "QA042",
+    "rule_id": "R10",
+    "intent_id": "FB01",
+    "tag": "Fallback",
+    "category": "Percakapan",
+    "question": "(Input tidak dikenali / tidak ada keyword cocok)",
+    "patterns": [
+      "(tidak ada keyword cocok)"
+    ],
+    "response": "Maaf, aku belum mengerti maksudmu. Coba sebutkan nama sampahnya, misalnya \"botol plastik\", \"kulit pisang\", atau \"baterai bekas\".",
+    "status": "Usulan baru",
+    "priority": 99,
+    "description": "Tidak ada keyword yang cocok",
+    "source": "Dokumen"
+  }
 }

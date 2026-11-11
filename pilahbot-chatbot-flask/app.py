@@ -41,11 +41,7 @@ def create_app(config=None):
         return render_template(
             "index.html",
             chatbot=chatbot.knowledge,
-            suggestions=[
-                "Botol plastik termasuk sampah apa?",
-                "Bagaimana membuat kompos?",
-                "Baterai bekas dibuang ke mana?",
-            ],
+            suggestions=chatbot.knowledge["suggestions"],
         )
 
     @app.get("/statistik")
