@@ -19,6 +19,31 @@ python app.py
 
 Buka <http://127.0.0.1:5000>.
 
+## Menjalankan versi CLI
+
+PilahBot juga dapat dijalankan langsung di terminal melalui `cli.py`:
+
+```powershell
+# Mode interaktif (sesi obrolan langsung)
+python cli.py
+
+# Mode sekali tanya (single-query)
+python cli.py "Botol plastik termasuk sampah apa?"
+
+# Mode dengan detail kecocokan (rule, intent, skor)
+python cli.py "Baterai bekas dibuang ke mana?" -v
+
+# Melihat ringkasan statistik database
+python cli.py --stats
+```
+
+Perintah khusus dalam mode interaktif:
+- `/bantuan` atau `/help`: melihat daftar perintah
+- `/statistik` atau `/stats`: melihat ringkasan statistik
+- `/debug` atau `/verbose`: toggle tampilan informasi pencocokan
+- `/clear` atau `/cls`: bersihkan layar terminal
+- `keluar`, `exit`, atau `quit`: mengakhiri sesi chat
+
 ## Statistik
 
 Buka <http://127.0.0.1:5000/statistik> atau pilih **Statistik** dari halaman chat.
